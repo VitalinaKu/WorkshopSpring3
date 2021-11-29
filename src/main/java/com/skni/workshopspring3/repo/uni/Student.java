@@ -1,13 +1,12 @@
-package com.skni.workshopspring3.uni;
+package com.skni.workshopspring3.repo.uni;
 
 import lombok.Data;
-import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Student")
+@Table(name = "student")
 @Data
 public class Student {
 

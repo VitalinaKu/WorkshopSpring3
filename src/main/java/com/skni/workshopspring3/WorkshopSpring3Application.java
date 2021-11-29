@@ -1,6 +1,15 @@
 package com.skni.workshopspring3;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+
+import com.skni.workshopspring3.repo.CourseRepository;
+import com.skni.workshopspring3.repo.StudentRepository;
+import com.skni.workshopspring3.repo.uni.Course;
+import com.skni.workshopspring3.repo.uni.CourseTypeEnum;
+import com.skni.workshopspring3.repo.uni.GenderEnum;
+import com.skni.workshopspring3.repo.uni.Student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,7 +22,27 @@ public class WorkshopSpring3Application {
 		SpringApplication.run(WorkshopSpring3Application.class, args);
 		System.out.println("The database was created.");
 	}
+
+	@Bean
+	CommandLineRunner init(StudentRepository studentRepository, CourseRepository courseRepository) {
+		return (args) -> {
+			List<Student> studentList = studentRepository.findAll();
+			System.out.println(studentList);
+			List<Course> courseList = courseRepository.findAll();
+			System.out.println(courseList);
+
+			List<Student> maleInzynier = studentRepository.findAllByGenderAndCourse_CourseType(GenderEnum.MALE, CourseTypeEnum.INZYNIER);
+			System.out.println(maleInzynier);
+
+			List<Student> studentsLastname = studentRepository.findAllByLastname("Kowalski");
+			System.out.println(studentsLastname);
+
+			Optional<Course> courseInUniversity = courseRepository.findByUniversity("Vistula");
+			System.out.println(courseInUniversity);
+		};
+	}
 }
+
 
 //	@Bean
 //	CommandLineRunner init(CourseService courseService, StudentService studentService) {
@@ -27,7 +56,7 @@ public class WorkshopSpring3Application {
 //					GenderEnum.MALE,
 //					course
 //			);
-//
+////
 //			Student studentFemale = studentService.addStudent(
 //					"Anna",
 //					"Kowalska",

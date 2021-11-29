@@ -1,4 +1,4 @@
-package com.skni.workshopspring3.uni;
+package com.skni.workshopspring3.repo.uni;
 
 import lombok.Data;
 
@@ -17,13 +17,13 @@ public class Course {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "numberOfHours")
+    @Column(name = "number_of_hours")
     private Integer numberOfHours;
 
     @Column(name = "university")
     private String university;
 
-    @Column(name = "courseType")
+    @Column(name = "course_type")
     @Enumerated(EnumType.STRING)
     private CourseTypeEnum courseType;
 }

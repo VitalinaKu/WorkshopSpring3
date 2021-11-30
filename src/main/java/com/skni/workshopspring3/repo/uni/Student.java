@@ -1,13 +1,19 @@
 package com.skni.workshopspring3.repo.uni;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "student")
 @Data
+@Builder
 public class Student {
 
     @Id
@@ -31,5 +37,4 @@ public class Student {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
-
 }

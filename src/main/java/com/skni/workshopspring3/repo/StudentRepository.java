@@ -15,9 +15,3 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     List<Student> findAllByLastname(String lastname);
 }
-  /*
-	@Query(
-			value = "SELECT distinct p.* FROM person p JOIN address a ON p.address_id = a.id WHERE p.gender = ?1 " +
-					"AND a.country = ?2",
-			nativeQuery = true)
-	List<Person> findAllByGenderAndCountry(String gender, String country);*/

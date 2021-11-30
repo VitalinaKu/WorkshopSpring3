@@ -1,12 +1,18 @@
 package com.skni.workshopspring3.repo.uni;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "course")
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
+@Builder
 public class Course {
 
     @Id
@@ -17,8 +23,8 @@ public class Course {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "number_of_hours")
-    private Integer numberOfHours;
+    @Column(name = "number_of_years")
+    private Integer numberOfYears;
 
     @Column(name = "university")
     private String university;

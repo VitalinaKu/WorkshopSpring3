@@ -10,6 +10,8 @@ import com.skni.workshopspring3.repo.uni.Course;
 import com.skni.workshopspring3.repo.uni.CourseTypeEnum;
 import com.skni.workshopspring3.repo.uni.GenderEnum;
 import com.skni.workshopspring3.repo.uni.Student;
+import com.skni.workshopspring3.service.CourseService;
+import com.skni.workshopspring3.service.StudentService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,59 +26,37 @@ public class WorkshopSpring3Application {
 	}
 
 	@Bean
-	CommandLineRunner init(StudentRepository studentRepository, CourseRepository courseRepository) {
+	CommandLineRunner init(CourseService courseService, StudentService studentService) {
 		return (args) -> {
-			List<Student> studentList = studentRepository.findAll();
-			System.out.println(studentList);
-			List<Course> courseList = courseRepository.findAll();
-			System.out.println(courseList);
+			Course course = courseService.addCourse("Informatyka", 3, "SGH", CourseTypeEnum.INZYNIER);
 
-			List<Student> maleInzynier = studentRepository.findAllByGenderAndCourse_CourseType(GenderEnum.MALE, CourseTypeEnum.INZYNIER);
-			System.out.println(maleInzynier);
+			Student studentMale = studentService.addStudent(
+					"Adam",
+					"Nowak",
+					LocalDate.of(1996, 05,10),
+					GenderEnum.MALE,
+					course
+			);
+//
+			Student studentFemale = studentService.addStudent(
+					"Anna",
+					"Kowalska",
+					LocalDate.of(1993, 10,22),
+					GenderEnum.FEMALE,
+					course
+			);
 
-			List<Student> studentsLastname = studentRepository.findAllByLastname("Kowalski");
-			System.out.println(studentsLastname);
+			System.out.println(studentMale);
+			System.out.println(studentFemale);
 
-			Optional<Course> courseInUniversity = courseRepository.findByUniversity("Vistula");
-			System.out.println(courseInUniversity);
+			System.out.println(studentService.findAllByLastName("Nowak"));
+
+			System.out.println(studentService.getStudentByGenderAndByCourseType(GenderEnum.MALE, CourseTypeEnum.INZYNIER));
+			System.out.println(studentService.getStudentByGenderAndByCourseType(GenderEnum.FEMALE, CourseTypeEnum.LICENCJAT));
+
+			System.out.println(studentService.getAllStudents());
+			System.out.println(studentService.deleteStudentById(studentMale.getId()));
+			System.out.println(studentService.getAllStudents());
 		};
 	}
 }
-
-
-//	@Bean
-//	CommandLineRunner init(CourseService courseService, StudentService studentService) {
-//		return (args) -> {
-//			Course course = courseService.addCourse("Informatyka", 3, "SGH", CourseTypeEnum.INZYNIER);
-//
-//			Student studentMale = studentService.addStudent(
-//					"Adam",
-//					"Nowak",
-//					LocalDate.of(1996, 05,10),
-//					GenderEnum.MALE,
-//					course
-//			);
-////
-//			Student studentFemale = studentService.addStudent(
-//					"Anna",
-//					"Kowalska",
-//					LocalDate.of(1993, 10,22),
-//					GenderEnum.FEMALE,
-//					course
-//			);
-//
-//			System.out.println(studentMale);
-//			System.out.println(studentFemale);
-//
-//			System.out.println(studentService.findAllByLastName("Nowak"));
-//
-//			System.out.println(studentService.getStudentByGenderAndByCourseType(GenderEnum.MALE, CourseTypeEnum.INZYNIER));
-//			System.out.println(studentService.getStudentByGenderAndByCourseType(GenderEnum.FEMALE, CourseTypeEnum.LICENCJAT));
-//
-//			System.out.println(studentService.getAllStudents());
-//			System.out.println(studentService.deleteStudentById(student.getId()));
-//			System.out.println(studentService.getAllStudents());
-//
-//		};
-//	}
-//}

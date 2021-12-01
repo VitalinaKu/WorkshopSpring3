@@ -7,3 +7,7 @@ INSERT INTO student (id, name, lastname, birthdate, gender, course_id) VALUES
                                                                            (10, 'Jan', 'Kowalski', '1993-12-14', 'MALE', 7),
                                                                            (11, 'Melissa', 'Pertanko', '1999-12-13', 'FEMALE', 8),
                                                                            (12, 'Andrew', 'Mariko', '1998-02-10', 'MALE', 9);
+INSERT INTO teacher (id, fullname, course_id) VALUES
+                                                  (10, 'Henryk_Ostapowich', 7),
+                                                  (11, 'Viktor_Semenowicz', 9),
+                                                  (12, 'Max_Fake', 9);

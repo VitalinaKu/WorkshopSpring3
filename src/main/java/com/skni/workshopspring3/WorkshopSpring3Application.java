@@ -12,6 +12,7 @@ import com.skni.workshopspring3.repo.uni.GenderEnum;
 import com.skni.workshopspring3.repo.uni.Student;
 import com.skni.workshopspring3.service.CourseService;
 import com.skni.workshopspring3.service.StudentService;
+import com.skni.workshopspring3.service.TeacherService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,7 +27,7 @@ public class WorkshopSpring3Application {
 	}
 
 	@Bean
-	CommandLineRunner init(CourseService courseService, StudentService studentService) {
+	CommandLineRunner init(CourseService courseService, StudentService studentService, TeacherService teacherService) {
 		return (args) -> {
 			Course course = courseService.addCourse("Informatyka", 3, "SGH", CourseTypeEnum.INZYNIER);
 
@@ -37,7 +38,7 @@ public class WorkshopSpring3Application {
 					GenderEnum.MALE,
 					course
 			);
-//
+
 			Student studentFemale = studentService.addStudent(
 					"Anna",
 					"Kowalska",
@@ -57,6 +58,8 @@ public class WorkshopSpring3Application {
 			System.out.println(studentService.getAllStudents());
 			System.out.println(studentService.deleteStudentById(studentMale.getId()));
 			System.out.println(studentService.getAllStudents());
+
+			System.out.println(teacherService.getTeachersByCourse(9)); //getting teachers by course
 		};
 	}
 }

@@ -1,10 +1,9 @@
-package com.skni.workshopspring3.repo.dto;
+package com.skni.workshopspring3.repository.dto;
 
-import com.skni.workshopspring3.repo.uni.CourseTypeEnum;
+import com.skni.workshopspring3.repository.model.CourseTypeEnum;
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Data
 public class CourseRequest {
@@ -13,15 +12,15 @@ public class CourseRequest {
     @Size(min = 4, max = 20)
     private String name;
 
-    @NotBlank(message = "Please enter number of years.")
-    @Size(max = 1)
+    @NotNull(message = "Please enter number of years.")
+    @Min(1)
+    @Max(9)
     private Integer numberOfYears;
 
     @NotBlank(message = "Please enter university.")
     @Size(min = 4, max = 20)
     private String university;
 
-    @NotBlank(message = "Please enter course type.")
-    @Size(min = 4, max = 20)
+    @NotNull(message = "Please enter course type.")
     private CourseTypeEnum courseType;
 }

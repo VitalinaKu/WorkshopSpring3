@@ -1,15 +1,12 @@
 package com.skni.workshopspring3;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
 
-import com.skni.workshopspring3.repo.CourseRepository;
-import com.skni.workshopspring3.repo.StudentRepository;
-import com.skni.workshopspring3.repo.uni.Course;
-import com.skni.workshopspring3.repo.uni.CourseTypeEnum;
-import com.skni.workshopspring3.repo.uni.GenderEnum;
-import com.skni.workshopspring3.repo.uni.Student;
+import com.skni.workshopspring3.repository.dto.CourseResponse;
+import com.skni.workshopspring3.repository.model.Course;
+import com.skni.workshopspring3.repository.model.CourseTypeEnum;
+import com.skni.workshopspring3.repository.model.GenderEnum;
+import com.skni.workshopspring3.repository.model.Student;
 import com.skni.workshopspring3.service.CourseService;
 import com.skni.workshopspring3.service.StudentService;
 import com.skni.workshopspring3.service.TeacherService;
@@ -29,7 +26,12 @@ public class WorkshopSpring3Application {
 	@Bean
 	CommandLineRunner init(CourseService courseService, StudentService studentService, TeacherService teacherService) {
 		return (args) -> {
-			Course course = courseService.addCourse("Informatyka", 3, "SGH", CourseTypeEnum.INZYNIER);
+			CourseResponse cr = new CourseResponse();
+			cr.setName("Informatyka");
+			cr.setUniversity("Hogwarts");
+			cr.setNumberOfYears(3);
+			cr.setCourseType(CourseTypeEnum.INZYNIER);
+			Course course = courseService.addCourse(cr);
 
 			Student studentMale = studentService.addStudent(
 					"Adam",

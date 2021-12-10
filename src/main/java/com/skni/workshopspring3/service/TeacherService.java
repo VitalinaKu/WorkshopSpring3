@@ -1,7 +1,7 @@
 package com.skni.workshopspring3.service;
 
-import com.skni.workshopspring3.repo.TeacherRepository;
-import com.skni.workshopspring3.repo.uni.Teacher;
+import com.skni.workshopspring3.repository.TeacherRepository;
+import com.skni.workshopspring3.repository.model.Teacher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

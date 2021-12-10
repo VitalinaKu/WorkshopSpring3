@@ -1,10 +1,10 @@
 package com.skni.workshopspring3.service;
 
-import com.skni.workshopspring3.repo.StudentRepository;
-import com.skni.workshopspring3.repo.uni.Course;
-import com.skni.workshopspring3.repo.uni.CourseTypeEnum;
-import com.skni.workshopspring3.repo.uni.GenderEnum;
-import com.skni.workshopspring3.repo.uni.Student;
+import com.skni.workshopspring3.repository.StudentRepository;
+import com.skni.workshopspring3.repository.model.Course;
+import com.skni.workshopspring3.repository.model.CourseTypeEnum;
+import com.skni.workshopspring3.repository.model.GenderEnum;
+import com.skni.workshopspring3.repository.model.Student;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

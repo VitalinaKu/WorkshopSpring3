@@ -1,4 +1,4 @@
-package com.skni.workshopspring3.repo.uni;
+package com.skni.workshopspring3.repository.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

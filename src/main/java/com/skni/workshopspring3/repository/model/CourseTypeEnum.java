@@ -1,4 +1,4 @@
-package com.skni.workshopspring3.repo.uni;
+package com.skni.workshopspring3.repository.model;
 
 public enum CourseTypeEnum {
     LICENCJAT,INZYNIER, MAGISTER;
